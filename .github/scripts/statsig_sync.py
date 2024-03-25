@@ -36,11 +36,11 @@ def create_or_update_metric(metric_data):
     try:
         # Check if metric exists
         response = get_metric(metric_id)
-        url = f{STATSIG_API_URL}/metrics/{metric_id}
+        url = f"{STATSIG_API_URL}/metrics/{metric_id}"
     except requests.exceptions.HTTPError as e:
         if e.response.status_code == 404:
             # If not found, we're creating a new one
-            url = f{STATSIG_API_URL}/metrics
+            url = f"{STATSIG_API_URL}/metrics"
         else:
             # If other HTTP error, raise it
             print(e)
