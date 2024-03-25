@@ -1,0 +1,61 @@
+---
+name: Semantic Layer Purchase Funnel
+directionality: increase
+type: user_warehouse
+description: ''
+isPermanent: false
+isReadOnly: false
+isHidden: false
+isVerified: false
+tags:
+- Semantic Layer
+creatorName: ryan musser
+creatorEmail: ryan@statsig.com
+createdTime: 1711394414453
+owner:
+  name: ryan musser
+team: 
+warehouseNative:
+  aggregation: funnel
+  metricSourceName: Log Events
+  criteria: []
+  funnelCountDistinct: users
+  funnelEvents:
+  - metricSourceName: Log Events
+    sessionIdentifierField: ''
+    name: page_view
+    criteria:
+    - type: metadata
+      column: page
+      condition: in
+      values:
+      - product_page
+  - metricSourceName: Log Events
+    sessionIdentifierField: ''
+    name: add_to_cart
+    criteria:
+    - type: metadata
+      column: event
+      condition: in
+      values:
+      - add_to_cart
+  - metricSourceName: Log Events
+    sessionIdentifierField: ''
+    name: cart_view
+    criteria:
+    - type: metadata
+      column: page
+      condition: in
+      values:
+      - cart
+  - metricSourceName: Log Events
+    sessionIdentifierField: ''
+    name: purchase
+    criteria:
+    - type: metadata
+      column: event
+      condition: in
+      values:
+      - purchase
+  funnelStartCriteria: start_event
+id: Semantic Layer Purchase Funnel::user_warehouse
