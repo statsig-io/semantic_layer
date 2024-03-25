@@ -2,7 +2,7 @@
 name: Semantic Layer Purchase Funnel
 directionality: increase
 type: user_warehouse
-description: 'Did this sync?'
+description: 'Did this one sync?'
 isPermanent: false
 isReadOnly: false
 isHidden: false
