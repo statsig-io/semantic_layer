@@ -16,15 +16,20 @@ def encode_metric_id(metric_name):
 def get_metric(metric_id):
     try:
         response = requests.get(
-            f"{STATSIG_API_URL}/metrics/{metric_id}",
+            f"{STATSIG_API_URL}/metrics/{urllib.parse.quote(metric_id)}",
             headers={'STATSIG-API-KEY': STATSIG_API_KEY}
         )
         response.raise_for_status()
         print(response.json())
         return response
     except requests.exceptions.HTTPError as e:
-        print(e)
-        return response
+        if e.response.status_code == 404:
+            print(f"Metric '{metric_id}' not found.")
+            return None  # Metric does not exist
+        else:
+            print(e)
+            return response  # Other HTTP errors, still return the response for further handling
+
 
 
 def create_or_update_metric(metric_data):
@@ -35,28 +40,26 @@ def create_or_update_metric(metric_data):
         'STATSIG-API-KEY': STATSIG_API_KEY,
         'Content-Type': 'application/json'
     }
-    response = None
+
+    # Attempt to fetch the metric
+    response = get_metric(metric_id)
+    if response is None:  # Metric does not exist, let's create it
+        url = f"{STATSIG_API_URL}/metrics"
+        method = requests.post
+    else:  # Metric exists, let's update it
+        url = f"{STATSIG_API_URL}/metrics/{urllib.parse.quote(metric_id)}"
+        method = requests.patch  # Assuming 'patch' is the method for updating, adjust if it's different
+
+    # Create or update the metric
+    response = method(url, headers=headers, json=metric_data)
     try:
-        # Check if metric exists
-        response = get_metric(metric_id)
-        url = f"{STATSIG_API_URL}/metrics/{metric_id}"
+        response.raise_for_status()
+        print(f"Metric '{metric_id}' created or updated successfully.")
+        return response.json()
     except requests.exceptions.HTTPError as e:
-        if e.response.status_code == 404:
-            # If not found, we're creating a new one
-            url = f"{STATSIG_API_URL}/metrics"
-        else:
-            # If other HTTP error, raise it
-            print(e)
-            raise
-    
-    if response is None:
-        print("No response received from get_metric.")
+        print(f"Failed to create or update metric '{metric_id}': {e}")
         return None
 
-    if response and response.status_code != 200:
-        print(e)
-    response.raise_for_status()
-    return response.json()
 
 
 def get_existing_metric_sources():
