@@ -15,13 +15,17 @@ def encode_metric_id(metric_name):
 
 def get_metric(metric_id):
     encoded_metric_id = encode_metric_id(metric_id)
-    response = requests.get(
-        f"{STATSIG_API_URL}/metrics/{encoded_metric_id}",
-        headers={'STATSIG-API-KEY': STATSIG_API_KEY}
-    )
-    response.raise_for_status()
-    print(response.json())
-    return response.json()
+    try:
+        response = requests.get(
+            f"{STATSIG_API_URL}/metrics/{encoded_metric_id}",
+            headers={'STATSIG-API-KEY': STATSIG_API_KEY}
+        )
+        response.raise_for_status()
+        print(response.json())
+        return response
+    except requests.exceptions.HTTPError as e:
+        print(e)
+        return response
 
 
 def create_or_update_metric(metric_data):
@@ -46,6 +50,10 @@ def create_or_update_metric(metric_data):
             print(e)
             raise
     
+    if response is None:
+        print("No response received from get_metric.")
+        return None
+
     if response and response.status_code != 200:
         print(e)
     response.raise_for_status()
