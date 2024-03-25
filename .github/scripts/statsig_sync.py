@@ -42,11 +42,11 @@ def create_or_update_metric(metric_data):
             url = f"{STATSIG_API_URL}/metrics"
         else:
             # If other HTTP error, raise it
-            print(Error response:, e.response.text)
+            print(e)
             raise
     
     if response.status_code != 200:
-        print(Error response:, e.response.text)
+        print(e)
     response.raise_for_status()
     return response.json()
 
