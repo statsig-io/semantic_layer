@@ -46,7 +46,7 @@ def create_or_update_metric(metric_data):
             raise
     
     if response.status_code != 200:
-        print(Failed request details:, response.text)
+        print(Error response:, e.response.text)
     response.raise_for_status()
     return response.json()
 
