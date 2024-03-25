@@ -15,7 +15,7 @@ createdTime: 1711394414453
 owner:
   name: ryan musser
 team: 
-warehouseNative:
+metricDefinition:
   aggregation: funnel
   metricSourceName: Log Events
   criteria: []
