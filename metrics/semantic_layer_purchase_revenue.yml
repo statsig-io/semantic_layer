@@ -1,0 +1,34 @@
+---
+name: Semantic Layer Purchase Revenue
+directionality: increase
+type: user_warehouse
+description: ''
+isPermanent: false
+isReadOnly: false
+isHidden: false
+isVerified: false
+tags:
+- Semantic Layer
+creatorName: ryan musser
+creatorEmail: ryan@statsig.com
+createdTime: 1711394974752
+owner:
+  name: ryan musser
+team: 
+warehouseNative:
+  aggregation: sum
+  metricSourceName: Checkout Events
+  criteria:
+  - type: metadata
+    column: event
+    condition: in
+    values:
+    - purchase
+  metricDimensionColumns:
+  - product_category
+  - page
+  valueColumn: price_usd
+  winsorizationHigh: 0.999
+  winsorizationLow: 0.001
+  cupedAttributionWindow: 7
+id: Semantic Layer Purchase Revenue::user_warehouse
