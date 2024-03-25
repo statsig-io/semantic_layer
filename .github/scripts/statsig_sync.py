@@ -65,7 +65,7 @@ def get_existing_metric_sources():
         headers={'STATSIG-API-KEY': STATSIG_API_KEY}
     )
     response.raise_for_status()
-    return response.json().data
+    return response.json()['data']
 
 
 def create_or_update_metric_source(source_data):
