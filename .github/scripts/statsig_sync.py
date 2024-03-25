@@ -16,7 +16,7 @@ def encode_metric_id(metric_name):
 def get_metric(metric_id):
     try:
         response = requests.get(
-            f"{STATSIG_API_URL}/metrics/{encoded_metric_id}",
+            f"{STATSIG_API_URL}/metrics/{metric_id}",
             headers={'STATSIG-API-KEY': STATSIG_API_KEY}
         )
         response.raise_for_status()
