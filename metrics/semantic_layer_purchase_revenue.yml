@@ -15,7 +15,7 @@ createdTime: 1711394974752
 owner:
   name: ryan musser
 team: 
-warehouseNative:
+metricDefinition:
   aggregation: sum
   metricSourceName: Checkout Events
   criteria:
