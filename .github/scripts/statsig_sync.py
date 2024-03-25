@@ -10,7 +10,7 @@ STATSIG_API_URL = 'https://statsigapi.net/console/v1'
 
 
 def encode_metric_id(metric_name):
-    return urllib.parse.quote(f"{metric_name}::user_warehouse", safe='')
+    return f"{metric_name}::user_warehouse"
 
 
 def get_metric(metric_id):
