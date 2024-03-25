@@ -1,0 +1,15 @@
+---
+name: Semantic Layer Metric Source
+description: This metric source is synced from our semantic layer sync script
+tags:
+- Support
+- Growth
+- Semantic Layer
+sql: SELECT * FROM shoppy-sales.logging.events
+timestampColumn: ts
+timestampAsDay: false
+idTypeMapping:
+- statsigUnitID: userID
+  column: user_id
+- statsigUnitID: deviceID
+  column: device_id
