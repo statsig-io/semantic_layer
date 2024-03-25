@@ -6,7 +6,7 @@ import urllib.parse  # For encoding metric IDs
 import yaml  # Make sure to import yaml
 
 STATSIG_API_KEY = os.environ.get('STATSIG_API_KEY')
-STATSIG_API_URL = 'https://statsigapi.net/console/v1/'
+STATSIG_API_URL = 'https://statsigapi.net/console/v1'
 
 
 def encode_metric_id(metric_name):
