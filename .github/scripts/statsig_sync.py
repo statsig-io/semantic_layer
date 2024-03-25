@@ -20,17 +20,18 @@ def get_metric(metric_id):
         headers={'STATSIG-API-KEY': STATSIG_API_KEY}
     )
     response.raise_for_status()
+    print(response.json())
     return response.json()
 
 
 def create_or_update_metric(metric_data):
     metric_id = encode_metric_id(metric_data['name'])
+    print(metric_id)
     metric_data['warehouseNative'] = metric_data.pop('metricDefinition', {})  # Rename key
     headers = {
         'STATSIG-API-KEY': STATSIG_API_KEY,
         'Content-Type': 'application/json'
     }
-    print(metric_data)
     try:
         # Check if metric exists
         get_metric(metric_id)
@@ -43,9 +44,6 @@ def create_or_update_metric(metric_data):
             # If other HTTP error, raise it
             print("Error response:", e.response.text)
             raise
-    
-    print(f"Making request to URL: {url} with data: {json.dumps(metric_data)}")
-    response = requests.post(url, headers=headers, json=metric_data)
     
     if response.status_code != 200:
         print("Failed request details:", response.text)
