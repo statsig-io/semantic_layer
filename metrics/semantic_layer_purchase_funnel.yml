@@ -58,4 +58,4 @@ metricDefinition:
       values:
       - purchase
   funnelStartCriteria: start_event
-id: Semantic Layer Purchase Funnel::user_warehouse
+id: Semantic Layer Purchase Funnel Test::user_warehouse
