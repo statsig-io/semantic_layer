@@ -5,7 +5,7 @@ from glob import glob
 import urllib.parse  # For encoding metric IDs
 import yaml  # Make sure to import yaml
 
-STATSIG_API_KEY = secrets.['STATSIG_API_KEY']
+STATSIG_API_KEY = secrets.STATSIG_API_KEY
 STATSIG_API_URL = 'https://statsigapi.net/console/v1/'
 
 
