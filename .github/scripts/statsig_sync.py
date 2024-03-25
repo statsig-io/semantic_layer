@@ -32,20 +32,21 @@ def create_or_update_metric(metric_data):
         'STATSIG-API-KEY': STATSIG_API_KEY,
         'Content-Type': 'application/json'
     }
+    response = None
     try:
         # Check if metric exists
         response = get_metric(metric_id)
-        url = f"{STATSIG_API_URL}/metrics/{metric_id}"
+        url = f{STATSIG_API_URL}/metrics/{metric_id}
     except requests.exceptions.HTTPError as e:
         if e.response.status_code == 404:
             # If not found, we're creating a new one
-            url = f"{STATSIG_API_URL}/metrics"
+            url = f{STATSIG_API_URL}/metrics
         else:
             # If other HTTP error, raise it
             print(e)
             raise
     
-    if response.status_code != 200:
+    if response and response.status_code != 200:
         print(e)
     response.raise_for_status()
     return response.json()
