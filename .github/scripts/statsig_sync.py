@@ -48,7 +48,7 @@ def create_or_update_metric(metric_data):
         method = requests.post
     else:  # Metric exists, let's update it
         url = f"{STATSIG_API_URL}/metrics/{urllib.parse.quote(metric_id)}"
-        method = requests.patch  # Assuming 'patch' is the method for updating, adjust if it's different
+        method = requests.post  # Assuming 'patch' is the method for updating, adjust if it's different
 
     # Create or update the metric
     response = method(url, headers=headers, json=metric_data)
