@@ -76,10 +76,18 @@ def create_or_update_metric_source(source_data):
     # Check if the source already exists (this part may need adjustment based on your API)
     existing_sources = get_existing_metric_sources()
     if source_name in [source['name'] for source in existing_sources]:
-        # Update logic here
+        # Update metric source
         print(f"Updating metric source: {source_name}")
+        response = requests.post(
+            f"{STATSIG_API_URL}/metrics/metric_source/{urllib.parse.quote(source_name)}",
+            headers={'STATSIG-API-KEY': STATSIG_API_KEY},
+            json=source_data
+        )
+        response.raise_for_status()
+        return response.json()
     else:
         # Create new metric source
+        print(f"Creating metric source: {source_name}")
         response = requests.post(
             f"{STATSIG_API_URL}/metrics/metric_source",
             headers={'STATSIG-API-KEY': STATSIG_API_KEY},
