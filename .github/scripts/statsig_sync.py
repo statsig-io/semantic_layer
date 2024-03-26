@@ -48,7 +48,7 @@ def create_or_update_metric(metric_data):
         method = requests.post
     else:  # Metric exists, let's update it
         url = f"{STATSIG_API_URL}/metrics/{urllib.parse.quote(metric_id)}"
-        method = requests.post  # Assuming 'patch' is the method for updating, adjust if it's different
+        method = requests.post 
 
     # Create or update the metric
     response = method(url, headers=headers, json=metric_data)
@@ -107,7 +107,8 @@ def sync_file(file_path):
         create_or_update_metric_source(content)
 
 def main():
-    modified_files = glob('metrics/*.yml') + glob('metric_sources/*.yml')
+    #Intentional metric sources sync first
+    modified_files = glob('metric_sources/*.yml') + glob('metrics/*.yml')
     for file_path in modified_files:
         sync_file(file_path)
 
