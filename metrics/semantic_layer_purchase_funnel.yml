@@ -1,5 +1,5 @@
 ---
-name: Semantic Layer Purchase Funnel Test
+name: Semantic Layer Purchase Funnel Test2
 directionality: increase
 type: user_warehouse
 description: 'Testing'
@@ -17,7 +17,7 @@ owner:
 team: 
 metricDefinition:
   aggregation: funnel
-  metricSourceName: Semantic Layer Metric Source Test
+  metricSourceName: Semantic Layer Metric Source Test2
   criteria: []
   funnelCountDistinct: users
   funnelEvents:
