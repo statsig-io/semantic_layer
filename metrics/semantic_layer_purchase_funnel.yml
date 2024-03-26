@@ -1,5 +1,5 @@
 ---
-name: Semantic Layer Purchase Funnel Test2
+name: Semantic Layer Purchase Funnel
 directionality: increase
 type: user_warehouse
 description: 'Testing'
@@ -17,11 +17,11 @@ owner:
 team: 
 metricDefinition:
   aggregation: funnel
-  metricSourceName: Semantic Layer Metric Source Test2
+  metricSourceName: Semantic Layer Metric Source
   criteria: []
   funnelCountDistinct: users
   funnelEvents:
-  - metricSourceName: Semantic Layer Metric Source Test
+  - metricSourceName: Semantic Layer Metric Source
     sessionIdentifierField: ''
     name: page_view
     criteria:
@@ -30,7 +30,7 @@ metricDefinition:
       condition: in
       values:
       - product_page
-  - metricSourceName: Semantic Layer Metric Source Test
+  - metricSourceName: Semantic Layer Metric Source
     sessionIdentifierField: ''
     name: add_to_cart
     criteria:
@@ -39,7 +39,7 @@ metricDefinition:
       condition: in
       values:
       - add_to_cart
-  - metricSourceName: Semantic Layer Metric Source Test
+  - metricSourceName: Semantic Layer Metric Source
     sessionIdentifierField: ''
     name: cart_view
     criteria:
@@ -48,7 +48,7 @@ metricDefinition:
       condition: in
       values:
       - cart
-  - metricSourceName: Semantic Layer Metric Source Test
+  - metricSourceName: Semantic Layer Metric Source
     sessionIdentifierField: ''
     name: purchase
     criteria:
