@@ -29,5 +29,5 @@ Now, edit the description of one of your metrics or metric sources. This should 
 
 ### Step 5: Feedback?
 
-Share feedback or improvements you've made to this workflow. Thanks!
+This is a very basic working MVP example. Please test and harden for production use cases. Share feedback or improvements you've made to this workflow. Thanks!
 
