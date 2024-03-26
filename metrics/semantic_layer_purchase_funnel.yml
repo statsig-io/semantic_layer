@@ -2,7 +2,7 @@
 name: Semantic Layer Purchase Funnel Test
 directionality: increase
 type: user_warehouse
-description: 'Testing the sync.......'
+description: 'Testing'
 isPermanent: false
 isReadOnly: false
 isHidden: false
