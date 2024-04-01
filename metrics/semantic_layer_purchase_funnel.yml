@@ -4,7 +4,7 @@ directionality: increase
 type: user_warehouse
 description: 'Testing'
 isPermanent: false
-isReadOnly: false
+isReadOnly: true
 isHidden: false
 isVerified: false
 tags:
