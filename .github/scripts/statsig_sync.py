@@ -73,7 +73,7 @@ def get_existing_metric_sources():
     return response.json()['data']
 
 def create_or_update_metric_source(source_data):
-    url = f"{STATSIG_API_URL}/metrics/metric_source",
+    url = f"{STATSIG_API_URL}/metrics/metric_source"
     source_name = source_data['name']
     existing_sources = get_existing_metric_sources()
     
