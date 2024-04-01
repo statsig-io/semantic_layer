@@ -55,7 +55,7 @@ def create_or_update_metric(metric_data):
         method = requests.post
     else:  # Metric exists, update it
         url = f"{STATSIG_API_URL}/metrics/{urllib.parse.quote(metric_id)}"
-        method = requests.put  # Assuming update should be a PUT request
+        method = requests.post  # Needs POST request
 
     response = method(url, headers=headers, json=metric_data)
     try:
@@ -77,14 +77,11 @@ def create_or_update_metric_source(source_data):
     existing_sources = get_existing_metric_sources()
     if source_name in [source['name'] for source in existing_sources]:
         print(f"Updating metric source: {source_name}")
-        method = requests.put  # Assuming update should be a PUT request
+        method = requests.post  # still a post
+        url += f"/{urllib.parse.quote(source_name)}"
     else:
         print(f"Creating metric source: {source_name}")
         method = requests.post
-
-    url = f"{STATSIG_API_URL}/metrics/metric_source"
-    if method == requests.put:
-        url += f"/{urllib.parse.quote(source_name)}"
 
     response = method(
         url,
