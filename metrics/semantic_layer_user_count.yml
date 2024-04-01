@@ -4,9 +4,9 @@ directionality: increase
 type: user_warehouse
 description: ''
 isPermanent: false
-isReadOnly: false
+isReadOnly: true
 isHidden: false
-isVerified: false
+isVerified: true
 tags:
 - Semantic Layer
 creatorName: ryan musser
