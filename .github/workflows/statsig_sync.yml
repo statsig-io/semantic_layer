@@ -8,6 +8,10 @@ on:
       - 'metrics/*.yml'
       - 'metric_sources/*.yml'
 
+defaults:
+  run:
+    working-directory: './scripts'
+
 jobs:
   sync_with_statsig:
     runs-on: ubuntu-latest

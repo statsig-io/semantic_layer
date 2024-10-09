@@ -97,7 +97,7 @@ def create_or_update_metric_source(source_data):
     except requests.exceptions.HTTPError:
         handle_api_error(response)
 
-def sync_file(file_path):
+def sync_file(file_path, schematype='statsigyml'):
     with open(file_path, 'r') as file:
         content = yaml.safe_load(file)
 
@@ -127,7 +127,7 @@ def sync_file(file_path):
 def main():
     modified_files = glob('metric_sources/*.yml') + glob('metrics/*.yml')
     for file_path in modified_files:
-        sync_file(file_path)
+        sync_file(file_path, schematype="statsigyml")
 
 if __name__ == '__main__':
     main()
